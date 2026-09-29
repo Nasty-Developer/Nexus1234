@@ -746,17 +746,21 @@ h1,h2,h3,p { margin-top:0; }
 @keyframes barGrow { from { transform:scaleX(0) } to { transform:scaleX(1) } }
 @keyframes plotIn { from { transform:scaleX(.04); opacity:.25 } to { transform:scaleX(1); opacity:1 } }
 @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; animation-duration:.01ms!important; transition-duration:.01ms!important; } }
-@media (max-width:1050px) {
-  .header-nav { gap:13px; }.header-nav a { font-size:8px; }
-  .hero { padding-left:6vw; padding-right:6vw; }
-  .hero-bottom { left:6vw; right:6vw; }
-}
-@media (max-width:840px) {
+@media (max-width:980px) {
   .header-nav,.header-actions .live-pill { display:none; }
   .header-actions { margin-left:auto; }.menu-button { display:grid; }
   .mobile-nav { display:flex; position:absolute; top:69px; left:0; right:0; padding:19px 22px 24px; background:var(--bg); border-bottom:1px solid var(--line); flex-direction:column; gap:17px; transform:translateY(-8px); opacity:0; pointer-events:none; transition:opacity .2s,transform .2s; }
   .mobile-nav.open { opacity:1; transform:translateY(0); pointer-events:auto; }
   .mobile-nav a { font-size:10px; }
+}
+@media (max-width:1050px) {
+  .header-nav { gap:clamp(8px,1.1vw,13px); }
+  .header-nav a { font-size:8px; letter-spacing:.04em; }
+  .header-actions { gap:9px; }
+  .hero { padding-left:6vw; padding-right:6vw; }
+  .hero-bottom { left:6vw; right:6vw; }
+}
+@media (max-width:840px) {
   .hero { min-height:auto; grid-template-columns:1fr; padding-top:133px; padding-bottom:86px; gap:35px; }
   .hero-visual { justify-self:start; width:min(100%,540px); }
   .hero-bottom { bottom:0; }
@@ -816,4 +820,22 @@ h1,h2,h3,p { margin-top:0; }
   .forecast { min-height:240px; }
   .footer { align-items:flex-start; flex-direction:column; }
   .footer-copy.right { text-align:left; }
+}
+@media (max-width:700px) {
+  .weather-layout { grid-template-columns:1fr; }
+  .weather-main { grid-column:auto; }
+}
+@media (max-width:380px) {
+  .hero-bottom { height:auto; min-height:46px; align-items:flex-start; flex-direction:column; justify-content:center; gap:6px; }
+  .score-panel { min-height:245px; padding:18px; gap:8px; }
+  .score-ring { width:88px; height:88px; }
+  .score-number { font-size:74px; }
+  .score-outof { margin-left:5px; }
+  .metric-cell { padding:14px 10px; }
+  .metric-value { font-size:clamp(23px,7vw,27px); }
+  .network-aside { grid-template-columns:1fr; }
+  .network-stat .metric-value { font-size:clamp(28px,8vw,33px); }
+  .map-node[aria-label^="MARKET EAST"] span,
+  .map-node[aria-label^="CENTRAL STN."] span { transform:translateX(calc(-100% - 7px)); }
+  .weather-bottom { gap:16px; }
 }
