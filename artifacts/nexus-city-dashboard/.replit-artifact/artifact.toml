@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "NEXUS Smart City"
+description = "A polished, responsive smart-city operations dashboard for a college hackathon prototype, showing simulated traffic, mobility, energy, environment, waste, weather, city-network, and overall system health without a backend."
+version = "1.0.0"
+id = "artifacts/nexus-city-dashboard"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23087
+
+[services.development]
+run = "pnpm --filter @workspace/nexus-city-dashboard run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nexus-city-dashboard", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nexus-city-dashboard/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23087"
+BASE_PATH = "/"
